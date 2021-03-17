@@ -4,6 +4,8 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 
 import AuthService from "../../services/auth.service";
+import { Redirect } from "react-router";
+import { Link } from "react-router-dom";
 
 const required = (value) => {
   if (!value) {
@@ -66,14 +68,11 @@ const Login = (props) => {
   };
 
   return (
-    <div className="col-md-12">
-      <div className="card card-container">
-        <img
-          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-          alt="profile-img"
-          className="profile-img-card"
-        />
-
+    <div className="login-box">
+      <div className="login-logo">
+        <h1>Welecome Back !</h1>
+      </div>
+      <div className="login-card">
         <Form onSubmit={handleLogin} ref={form}>
           <div className="form-group">
             <label htmlFor="email">Email</label>
@@ -97,15 +96,20 @@ const Login = (props) => {
               onChange={onChangePassword}
               validations={[required]}
             />
+            <a href="#"> Forgotten Password ?</a>
           </div>
 
           <div className="form-group">
-            <button className="btn btn-primary btn-block" disabled={loading}>
+            <button className="btn btn-primary" disabled={loading}>
               {loading && (
                 <span className="spinner-border spinner-border-sm"></span>
               )}
               <span>Login</span>
             </button>
+
+            <Link to={"/register"} className="btn btn-info">
+              <span>Register</span>
+            </Link>
           </div>
 
           {message && (

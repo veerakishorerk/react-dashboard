@@ -1,5 +1,3 @@
-import "../../asset/css/side.css";
-
 const Sidebar = ({sidebar, closeSidebar}) =>{
 
     return(
